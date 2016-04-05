@@ -21,7 +21,10 @@ public class ManualCommand implements BaseCommand {
         if (params[1] instanceof String) {
             value = String.valueOf(params[1]);
         } else { return false; }
-        CommandsEnum command = CommandsEnum.getCommandFromString(value);
+        if (value.equals("help"))
+            for (CommandsEnum c : CommandsEnum.values())
+                System.out.println(c.command.description());
+        BaseCommand command = CommandsEnum.getCommandFromString(value);
         if (command != null) {
             System.out.println(command.description());
         }

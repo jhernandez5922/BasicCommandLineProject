@@ -20,10 +20,9 @@ public class CreateCommand implements BaseCommand {
 
     @Override
     public Object execute(Object... params) {
-       if (params.length > 2 && params[0] instanceof Directory
-                && params[1] instanceof String && params[2] instanceof Integer) {
+       if (params.length > 2 && params[0] instanceof Directory) {
             Directory current = (Directory) params[0];
-            current.add(new SystemFile(current, String.valueOf(params[1]), (Integer) params[2]));
+            current.add(new SystemFile(current, String.valueOf(params[1]), Integer.valueOf((String) params[2])));
             return true;
         }
         return false;

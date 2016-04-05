@@ -5,6 +5,10 @@
  */
 package csci152_project1.Commands;
 
+import csci152_project1.Directory;
+import csci152_project1.SystemFile;
+import csci152_project1.SystemObject;
+
 /**
  *
  * @author Jason
@@ -18,7 +22,22 @@ public class FileSizeCommand implements BaseCommand {
     
     @Override
     public Object execute(Object... params) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (params.length > 2) {
+            if (params[0] instanceof Directory) {
+                Directory current = (Directory) params[0];
+                SystemObject obj = current.getIfExists(params[1].toString());
+                if (obj instanceof SystemFile) {
+                    SystemFile file = (SystemFile) obj;
+                    System.out.println("Size of " + file.getName() + " is: "+ file.getSize());
+                }
+                else if (obj instanceof Directory) {
+                    Directory sizeCheck = (Directory) obj;
+                    sizeCheck.printSize();
+                }
+            }
+            
+        }
+        return null;
     }
 
     @Override

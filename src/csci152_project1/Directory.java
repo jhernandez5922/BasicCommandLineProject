@@ -38,18 +38,20 @@ public class Directory extends SystemObject {
     }    
 
     public SystemObject getIfExists(String dest) {
-        SystemObject obj = currentDir.get(dest);
-        if (obj instanceof Directory) {
-            return (Directory) obj;
-        }
-        else {
-            //TODO print error message
-            return null;
-        }
+        return currentDir.get(dest);
     }
 
     public boolean remove(String key) {
         SystemObject removed = currentDir.remove(key);
         return removed.name.equals(key);
+    }
+
+    public void printSize() {
+        int sum = 0;
+        for (SystemObject child : currentDir.values()) {
+           if (child instanceof SystemFile)
+               sum += ((SystemFile) child).getSize();
+       }
+       System.out.println("Size of Folder: " + sum);
     }
 }

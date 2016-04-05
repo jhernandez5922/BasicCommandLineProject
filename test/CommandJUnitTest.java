@@ -62,7 +62,7 @@ public class CommandJUnitTest {
     public void testCommandInput() {
         System.out.print("Testing command input...");
         for (CommandsEnum c : CommandsEnum.values()) {
-            CommandsEnum temp = CommandsEnum.getCommandFromString(c.commandName());
+            BaseCommand temp = CommandsEnum.getCommandFromString(c.command.name());
             assertEquals(temp, c);
         }
         System.out.println("PASSED");

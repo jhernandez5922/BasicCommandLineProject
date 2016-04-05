@@ -5,7 +5,18 @@
  */
 package csci152_project1.Commands;
 /**
- *
+ * This file is used to grab a command from the list and execute it without 
+ * the file system knowing which one
+ * 
+ * The current list is the following:
+ *  mkDir
+ *  create
+ *  changeDir
+ *  delete
+ *  size
+ *  list
+ *  pwd
+ *  man
  * @author Jason
  */
 public enum CommandsEnum {
@@ -25,23 +36,12 @@ public enum CommandsEnum {
     
     public final BaseCommand command;
     
-    
-    public static CommandsEnum getCommandFromString(String command) {
+    //interprets the string and returns the command if value, null otherwise
+    public static BaseCommand getCommandFromString(String command) {
         for (CommandsEnum c : CommandsEnum.values()) {
-            if (c.commandName().equals(command))
-                return c;
+            if (c.command.name().equals(command))
+                return c.command;
         }
         return null;
-    }
-    
-    public void execute() {
-        this.command.execute();
-    }
-
-    public String description() {
-        return command.description();
-    }
-    public String commandName() {
-        return command.name();
     }
 }

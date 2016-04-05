@@ -5,6 +5,7 @@
  */
 package csci152_project1;
 
+import csci152_project1.Commands.BaseCommand;
 import csci152_project1.Commands.CommandsEnum;
 import csci152_project1.Commands.CurrentPathCommand;
 import java.util.ArrayList;
@@ -15,38 +16,38 @@ import java.util.Scanner;
  *
  * @author Jason
  */
-public class FileSystem {
+public class CommandLine {
     
     Directory root;
     Directory current;
-    FileSystem() {
+    CommandLine() {
         root = new Directory(null, "root");
         current = root;
     }
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        FileSystem system = new FileSystem();
+        CommandLine system = new CommandLine();
         while (true) {
             System.out.print(CurrentPathCommand.directoryBuilder(system.current, new StringBuilder("Jason@jsonOS J:"))+":");
             String input = in.nextLine();
             String[] values = input.split(" ");
-            CommandsEnum command = CommandsEnum.getCommandFromString(values[0]);
+            BaseCommand command = CommandsEnum.getCommandFromString(values[0]);
             ArrayList<Object> params = new ArrayList<>();
             params.add(system.current);
-            for (String v : values) {
-                if (v.equals(values[0]))
+            for (int i = 0; i < values.length; i++) {
+                if (i == 0)
                     continue;
-                params.add(v);
+                params.add(values[i]);
             }
             params.add(system.root);
             if (command != null) {
-                Object result = command.command.execute(params.toArray());
+                Object result = command.execute(params.toArray());
                 if (result instanceof Directory) {
                     system.current = (Directory) result;
                 }
             } else {
-                System.out.println(values[0] + " is not recognized. If lost, please use the command 'man man' for help");
+                System.out.println(values[0] + " is not recognized. If lost, please use the command 'man help' for help");
             }
         }
     }

@@ -6,7 +6,7 @@
 package csci152_project1.Commands;
 
 /**
- *
+ * Prints out the description of the command
  * @author Jason
  */
 public class ManualCommand implements BaseCommand {

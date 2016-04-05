@@ -6,7 +6,7 @@
 package csci152_project1.Commands;
 
 /**
- *
+ * The interface for every command so that polymorphism can be used
  * @author Jason
  */
 public interface BaseCommand {

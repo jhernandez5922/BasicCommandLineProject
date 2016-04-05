@@ -8,7 +8,7 @@ package csci152_project1.Commands;
 import csci152_project1.Directory;
 
 /**
- *
+ * Makes a new directory at the given directory
  * @author Jason
  */
 public class MakeDirCommand implements BaseCommand {
@@ -19,6 +19,8 @@ public class MakeDirCommand implements BaseCommand {
     private static final String COMMAND = "mkdir";
     
     /**
+     *  
+     * 
      * 
      * @param params [0]: current directory
      *        params [1]: new directory name

@@ -9,7 +9,7 @@ import csci152_project1.Directory;
 import csci152_project1.SystemObject;
 
 /**
- *
+ * Prints the path to the current directory from the root directory
  * @author Jason
  */
 public class CurrentPathCommand implements BaseCommand {

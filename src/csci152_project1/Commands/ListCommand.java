@@ -10,7 +10,8 @@ import csci152_project1.SystemFile;
 import csci152_project1.SystemObject;
 
 /**
- *
+ * Lists the current directory or the children of the given directory or the size of the file
+ * depending on the input
  * @author Jason
  */
 public class ListCommand implements BaseCommand {

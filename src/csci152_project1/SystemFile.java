@@ -5,7 +5,7 @@
  */
 package csci152_project1;
 /**
- *
+ * Represents a file with a given size
  * @author Jason
  */
 public class SystemFile extends SystemObject {

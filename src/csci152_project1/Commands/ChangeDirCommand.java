@@ -6,9 +6,11 @@
 package csci152_project1.Commands;
 
 import csci152_project1.Directory;
+import csci152_project1.SystemFile;
+import csci152_project1.SystemObject;
 
 /**
- *
+ * Changes the current directory to the given one if it is valid
  * @author Jason
  */
 public class ChangeDirCommand implements BaseCommand {
@@ -37,14 +39,20 @@ public class ChangeDirCommand implements BaseCommand {
         if (params.length > 1) {
             if (params[1] instanceof Directory)
                 return (Directory) params[1];
-            String dest = String.valueOf(params[1]);
-            if (dest.equals(".."))
+            String [] path = String.valueOf(params[1]).split("/");
+            if (path[0].equals(".."))
                 return current.getParent();
-            return current.getIfExists(dest);
+            for (String item : path) {
+                SystemObject dest = (SystemObject) current.getIfExists(item);
+                if (dest == null)
+                    return current;
+                if (dest instanceof Directory)
+                    current = (Directory) dest;
+                if (dest instanceof SystemFile)
+                    return dest;
+            }
+            return current;
         }
-        else {
-            //TODO print error message
-        }      
         return null;
     }
 

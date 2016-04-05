@@ -10,7 +10,7 @@ import csci152_project1.SystemFile;
 import csci152_project1.SystemObject;
 
 /**
- *
+ * Prints the size of the folder or file
  * @author Jason
  */
 public class FileSizeCommand implements BaseCommand {

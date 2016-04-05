@@ -9,7 +9,7 @@ import csci152_project1.Directory;
 import csci152_project1.SystemFile;
 
 /**
- *
+ * Creates a new file with a given size
  * @author Jason
  */
 public class CreateCommand implements BaseCommand {
